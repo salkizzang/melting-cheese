@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- 배경 -->
+  <rect width="32" height="32" rx="6" fill="#4F46E5" />
+  
+  <!-- 두뇌 아이콘 -->
+  <path d="M16 5C11.5 5 8 8.5 8 13c0 1.9 0.7 3.7 1.9 5.1C8.7 19.4 8 21.2 8 23c0 0.8 0.3 1.5 0.8 2h14.4c0.5-0.5 0.8-1.2 0.8-2c0-1.8-0.7-3.6-1.9-4.9C23.3 16.7 24 14.9 24 13C24 8.5 20.5 5 16 5z" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- 숫자들 -->
+  <text x="12" y="16" font-family="Arial" font-weight="bold" font-size="7" fill="#FFFFFF">1</text>
+  <text x="18" y="21" font-family="Arial" font-weight="bold" font-size="7" fill="#FFFFFF">2</text>
+  <text x="16" y="14" font-family="Arial" font-weight="bold" font-size="7" fill="#FFFFFF">3</text>
+</svg>
