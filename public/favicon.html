@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Preview</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .favicon-preview {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .size-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Melting Cheese Favicon</h1>
+        <div class="favicon-preview">
+            <div class="size-box">
+                <div class="icon-box">
+                    <img src="favicon.svg" width="16" height="16" alt="16x16">
+                </div>
+                <span>16x16</span>
+            </div>
+            <div class="size-box">
+                <div class="icon-box">
+                    <img src="favicon.svg" width="32" height="32" alt="32x32">
+                </div>
+                <span>32x32</span>
+            </div>
+            <div class="size-box">
+                <div class="icon-box">
+                    <img src="favicon.svg" width="64" height="64" alt="64x64">
+                </div>
+                <span>64x64</span>
+            </div>
+            <div class="size-box">
+                <div class="icon-box">
+                    <img src="favicon.svg" width="128" height="128" alt="128x128">
+                </div>
+                <span>128x128</span>
+            </div>
+        </div>
+        <p>SVG favicon will automatically scale to any size needed by the browser.</p>
+    </div>
+</body>
+</html>

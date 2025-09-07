@@ -13,15 +13,16 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: 'MeltingCheese',
-  // description: '순간 기억력을 테스트하는 재미있는 게임입니다.',
   openGraph: {
     title: 'MeltingCheese',
-    // description: '친구들과 함께 기억력을 테스트해보세요!',
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: [
+      { url: '/favicon.ico?v=2', sizes: '32x32' },
+      { url: '/favicon.svg?v=2', type: 'image/svg+xml' }
+    ],
+    shortcut: '/favicon.ico?v=2',
+    apple: '/favicon.svg?v=2',
   },
 };
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        
             {children}
       </body>
     </html>

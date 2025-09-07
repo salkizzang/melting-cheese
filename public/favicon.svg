@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- 치즈 베이스 -->
+  <defs>
+    <linearGradient id="cheeseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE5B4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- 치즈 삼각형 -->
+  <path d="M 20 100 L 64 20 L 108 100 Z" 
+        fill="url(#cheeseGradient)" 
+        stroke="#FFA500" 
+        stroke-width="2"
+        filter="url(#shadow)"/>
+  
+  <!-- 치즈 구멍들 -->
+  <circle cx="45" cy="70" r="8" fill="#FFE5B4" opacity="0.8"/>
+  <circle cx="70" cy="60" r="6" fill="#FFE5B4" opacity="0.8"/>
+  <circle cx="83" cy="80" r="7" fill="#FFE5B4" opacity="0.8"/>
+  <circle cx="55" cy="45" r="5" fill="#FFE5B4" opacity="0.8"/>
+  <circle cx="40" cy="90" r="4" fill="#FFE5B4" opacity="0.8"/>
+  <circle cx="88" cy="90" r="4" fill="#FFE5B4" opacity="0.8"/>
+  
+  <!-- 녹는 효과 -->
+  <ellipse cx="30" cy="102" rx="8" ry="4" fill="#FFD700" opacity="0.7"/>
+  <ellipse cx="50" cy="104" rx="6" ry="3" fill="#FFA500" opacity="0.6"/>
+  <ellipse cx="78" cy="103" rx="7" ry="4" fill="#FFD700" opacity="0.7"/>
+  <ellipse cx="98" cy="102" rx="5" ry="3" fill="#FFA500" opacity="0.6"/>
+</svg>

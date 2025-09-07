@@ -2,110 +2,119 @@
   import React, { useState, useEffect, useRef,
     useLayoutEffect, useCallback, useMemo } from 'react';
   import './style.css';// Header 컴포넌트 수정
+  import './modern-styles.css'; // 모던 스타일 추가
+  import './product-modal-styles.css'; // 상품 모달 스타일 추가
   // CSS 가져오기
   import "slick-carousel/slick/slick.css";
   import "slick-carousel/slick/slick-theme.css";
   import Slider from 'react-slick';
+import Link from 'next/link';
+import { Header } from './header';
 
 
-  const Header = () => {
-    const [scrolled, setScrolled] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const prevScrollPosRef = useRef(0);
+  // const Header = () => {
+  //   const [scrolled, setScrolled] = useState(false);
+  //   const [isMobile, setIsMobile] = useState(false);
+  //   const [menuOpen, setMenuOpen] = useState(false);
+  //   const prevScrollPosRef = useRef(0);
 
-    // 모바일 여부 체크
-    useEffect(() => {
-      const checkMobile = () => {
-        setIsMobile(window.innerWidth <= 768); // 768px 이하를 모바일로 간주
-      };
+  //   // 모바일 여부 체크
+  //   useEffect(() => {
+  //     const checkMobile = () => {
+  //       setIsMobile(window.innerWidth <= 768); // 768px 이하를 모바일로 간주
+  //     };
       
-      // 초기 확인
-      checkMobile();
+  //     // 초기 확인
+  //     checkMobile();
       
-      // 리사이즈 이벤트 리스너 추가
-      window.addEventListener('resize', checkMobile);
+  //     // 리사이즈 이벤트 리스너 추가
+  //     window.addEventListener('resize', checkMobile);
       
-      return () => {
-        window.removeEventListener('resize', checkMobile);
-      };
-    }, []);
+  //     return () => {
+  //       window.removeEventListener('resize', checkMobile);
+  //     };
+  //   }, []);
 
-    // 스크롤 감지
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        prevScrollPosRef.current = window.scrollY;
+  //   // 스크롤 감지
+  //   useEffect(() => {
+  //     if (typeof window !== "undefined") {
+  //       prevScrollPosRef.current = window.scrollY;
 
-        const handleScroll = () => {
-          const currentScrollPos = window.scrollY;
-          prevScrollPosRef.current = currentScrollPos;
+  //       const handleScroll = () => {
+  //         const currentScrollPos = window.scrollY;
+  //         prevScrollPosRef.current = currentScrollPos;
 
-          if (currentScrollPos > 50) {
-            setScrolled(true);
-          } else {
-            setScrolled(false);
-          }
-        };
+  //         if (currentScrollPos > 50) {
+  //           setScrolled(true);
+  //         } else {
+  //           setScrolled(false);
+  //         }
+  //       };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }
-    }, []);
+  //       window.addEventListener("scroll", handleScroll);
+  //       return () => {
+  //         window.removeEventListener("scroll", handleScroll);
+  //       };
+  //     }
+  //   }, []);
 
-    const toggleMenu = () => setMenuOpen(!menuOpen);
-    const closeMenu = () => setMenuOpen(false);
+  //   const toggleMenu = () => setMenuOpen(!menuOpen);
+  //   const closeMenu = () => setMenuOpen(false);
 
-    return (
-      <>
-        <header className={scrolled || isMobile ? 'scrolled' : ''}>
-          <div className="logo" onClick={()=>window.scrollTo(0,0)}>MeltingCheese</div>
+  //   const moveNoticeMenu = () => {
+  //     console.log('노티스 화면 이동')
+  //   }
+
+  //   return (
+  //     <>
+  //       <header className={scrolled || isMobile ? 'scrolled' : ''}>
+  //         <div className="logo" onClick={()=>window.scrollTo(0,0)}>MeltingCheese</div>
           
-          {!scrolled && !isMobile ? (
-            // 스크롤 전 + 데스크탑 화면에서만 메뉴 표시
-            <ul className="nav-menu">
-              <li><a href="#collection">Collection</a></li>
-              <li><a href="#brand">Brand</a></li>
-              <li><a href="#notice">Notice</a></li> 
-              <li><a href="#meetme">Meet Me!</a></li>
-            </ul>
-          ) : (
-            // 스크롤 후 또는 모바일 화면에서는 메뉴 버튼 표시
-            <div className="mobile-menu-btn" onClick={toggleMenu}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 12H21" stroke="yellow" strokeWidth="2" strokeLinecap="round" />
-                <path d="M3 6H21" stroke="yellow" strokeWidth="2" strokeLinecap="round" />
-                <path d="M3 18H21" stroke="yellow" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </div>
-          )}
-        </header>
+  //         {!scrolled && !isMobile ? (
+  //           // 스크롤 전 + 데스크탑 화면에서만 메뉴 표시
+  //           <ul className="nav-menu">
+  //             <li><a href="#collection">Collection</a></li>
+  //             <li><a href="#brand">Brand</a></li>
+  //             <li><a onClick={()=>{console.log('노티스')}}>Notice</a></li> 
+  //             <li><a href="#meetme">Meet Me!</a></li>
+  //           </ul>
+  //         ) : (
+  //           // 스크롤 후 또는 모바일 화면에서는 메뉴 버튼 표시
+  //           <div className="mobile-menu-btn" onClick={toggleMenu}>
+  //             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //               <path d="M3 12H21" stroke="yellow" strokeWidth="2" strokeLinecap="round" />
+  //               <path d="M3 6H21" stroke="yellow" strokeWidth="2" strokeLinecap="round" />
+  //               <path d="M3 18H21" stroke="yellow" strokeWidth="2" strokeLinecap="round" />
+  //             </svg>
+  //           </div>
+  //         )}
+  //       </header>
 
-        {/* 모바일 메뉴 */}
-        <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
-          <div className="mobile-menu-overlay" onClick={closeMenu}></div>
-          <div className="mobile-menu-container">
-            <div className="mobile-menu-header">
-              <div className="logo">MeltingCheese</div>
-              <div className="close-btn" onClick={closeMenu}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 6L6 18" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M6 6L18 18" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <ul className="mobile-nav-menu">
-              <li><a href="#collection" onClick={closeMenu}>Collection</a></li>
-              <li><a href="#brand" onClick={closeMenu}>Brand</a></li>
-              <li><a href="#notice" onClick={closeMenu}>Notice</a></li> 
-              <li><a href="#meetme" onClick={closeMenu}>Meet Me!</a></li>
-            </ul>
-          </div>
-        </div>
-      </>
-    );
-  };
+  //       {/* 모바일 메뉴 */}
+  //       <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
+  //         <div className="mobile-menu-overlay" onClick={closeMenu}></div>
+  //         <div className="mobile-menu-container">
+  //           <div className="mobile-menu-header">
+  //             <div className="logo">MeltingCheese</div>
+  //             <div className="close-btn" onClick={closeMenu}>
+  //               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //                 <path d="M18 6L6 18" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  //                 <path d="M6 6L18 18" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  //               </svg>
+  //             </div>
+  //           </div>
+  //           <ul className="mobile-nav-menu">
+  //             <li><a href="#collection" onClick={closeMenu}>Collection</a></li>
+  //             <li><a href="#brand" onClick={closeMenu}>Brand</a></li>
+  //             <li><Link href={'/notice'}>Notice</Link></li> 
+  //             <li><a href="#meetme" onClick={closeMenu}>Meet Me!</a></li>
+  //           </ul>
+  //         </div>
+  //       </div>
+  //     </>
+  //   );
+  // };
+
   // MainVisual 컴포넌트
   const MainVisual = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -115,13 +124,36 @@
       {
         id: 1,
         title: 'We present you a day of a fairytale.',
-        // description: 'Handmade leather goods for your special moments',
+        description: 'Handmade leather goods for your special moments',
         imageUrl: 'main_2.jpeg'
       },
     ];
 
     return (
       <section className="main-visual">
+        {/* 배경 블롭 애니메이션 */}
+        <div className="blob" style={{
+          position: 'absolute',
+          top: '10%',
+          left: '10%',
+          width: '200px',
+          height: '200px',
+          background: 'linear-gradient(135deg, #FFB3BA, #FFDFBA)',
+          zIndex: 0,
+          opacity: 0.3
+        }}></div>
+        <div className="blob" style={{
+          position: 'absolute',
+          bottom: '10%',
+          right: '10%',
+          width: '150px',
+          height: '150px',
+          background: 'linear-gradient(135deg, #B3FFE3, #E0B3FF)',
+          zIndex: 0,
+          animationDelay: '10s',
+          opacity: 0.3
+        }}></div>
+        
         <div className="main-slider">
           {slides.map((slide, index) => (
             <div 
@@ -129,9 +161,6 @@
               className={`slide ${index === currentSlide ? 'active' : ''}`}
               style={{
                 backgroundImage: `url(${slide.imageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundColor: '#4a6572',
               }}
             />
           ))}
@@ -203,7 +232,7 @@ const sliderSettings = {
       // 다이어리 커버 카테고리
       {
         id: 1,
-        title: '📖Diary cover',
+        title: '📖다이어리',
         description: '소중한 기록을 담는 특별한 공간',
         imageUrl: 'home_2.jpg',
         products: [
@@ -414,19 +443,35 @@ return (
       
       <div className="slider-view">
         <Slider ref={sliderRef} {...sliderSettings}>
-          {selectedCategory.products.map((product) => (
+          {selectedCategory.products.map((product, index) => (
             <div key={product.id} className="slider-item-container">
-              <div 
-                className="slider-product-item"
-                onClick={() => goToStore(product.storeUrl)}
-              >
+              <div className="slider-product-item">
+                {/* 배지 */}
+                <div className="product-badges">
+                  {index % 3 === 0 && <span className="badge-new">NEW</span>}
+                  {index % 4 === 0 && <span className="badge-sale">SALE</span>}
+                </div> 
+                
                 <div 
                   className="product-image" 
                   style={{ backgroundImage: `url(${product.imageUrl})` }}
-                ></div>
+                >
+                  {/* 퀵뷰 오버레이 */}
+                  <div className="product-quickview">
+                    <div className="quickview-buttons">
+                      <button 
+                        className="btn-quickview btn-view-detail"
+                        onClick={() => goToStore(product.storeUrl)}
+                      >
+                        상품 상세보기
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
                 <div className="product-info">
                   <h4>{product.name}</h4>
-                  <p>{product.price}</p>
+                  <p className="price">{product.price}</p>
                 </div>
               </div>
             </div>
@@ -443,15 +488,15 @@ return (
   // BrandStory 컴포넌트
   const BrandStory = () => {
     return (
-      <section id="brand"  className="section brand-story" style={{ backgroundImage: `url('new_2.jpeg')`, backgroundSize : 'cover' }}>
-        <h2 className="section-title fade-in" style={{color: '#87b27a'}}>Brand Story</h2>
-        <div className="story-content fade-in">
-          <p className='brand-p'>사랑스러운 무드의 패브릭 소품들을 만들어요!🎠🎂</p>
-          <p className='brand-p'>쳐다만 보는 것만으로도 하루 종일 행복하게 만들어줄 '멜팅 치즈'의 패브릭 아이템들을 제작하고 있어요.</p>
-          <p className='brand-p'>오로지 당신을 위해! 당신에게 행복한 하루를 선물하기 위해 시작된 브랜드랍니다.💗</p>
+      <section id="brand"  className="section brand-story section-transition" style={{ backgroundImage: `url('new_2.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <h2 className="section-title fade-in gradient-text" style={{fontSize: '3rem'}}>Brand Story</h2>
+        <div className="story-content fade-in glass" style={{padding: '2rem', borderRadius: '20px', maxWidth: '800px', margin: '2rem auto'}}>
+          <p className='brand-p animate-fadeInUp' style={{animationDelay: '0.2s'}}>사랑스러운 무드의 패브릭 소품들을 만들어요!🎠🎂</p>
+          <p className='brand-p animate-fadeInUp' style={{animationDelay: '0.4s'}}>쳐다만 보는 것만으로도 하루 종일 행복하게 만들어줄 '멜팅 치즈'의 패브릭 아이템들을 제작하고 있어요.</p>
+          <p className='brand-p animate-fadeInUp' style={{animationDelay: '0.6s'}}>오로지 당신을 위해! 당신에게 행복한 하루를 선물하기 위해 시작된 브랜드랍니다.💗</p>
         </div>
-        <div className="brand-image-wrapper fade-in">
-          <div className="brand-image" style={{ backgroundImage: `url('home_1.jpg')` }}></div>
+        <div className="brand-image-wrapper fade-in animate-float">
+          <div className="brand-image neo-card" style={{ backgroundImage: `url('home_1.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
         </div>
       </section>
     );
